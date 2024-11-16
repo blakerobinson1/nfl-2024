@@ -61,9 +61,6 @@ final$label <- paste(final$month, final$year)
 final <- final |> 
   arrange(year, month)
 
-print(final)
-
-
 ggplot(final, aes(x = index, y = final_epa)) +
 geom_line() +
 geom_point() +
