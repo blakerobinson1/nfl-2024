@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 library(tidyverse)
 library(nflfastR)
 library(ggimage)
@@ -91,3 +92,41 @@ theme(panel.grid.minor.x = element_blank())
 
 
 
+=======
+library(gt)
+
+# Example data frame
+df <- data.frame(
+  ID = 1,
+  Targets = 10,
+  Catches = 7,
+  Catch_Percentage = 0.7
+)
+
+# Create a GT table
+gt_table <- df %>%
+  gt() %>%
+  cols_merge(
+    columns = c(Catches, Catch_Percentage),
+    # Use HTML for styling
+    pattern = "<div style='text-align: center;'>
+                 <span style='font-size: 16px; font-weight: bold;'>{1}</span><br>
+                 <span style='font-size: 12px; color: gray;'>{2}%</span>
+               </div>"
+  ) %>%
+  # Rename the merged column
+  cols_label(
+    Catches = "Catch Stats"
+  ) %>%
+  # Format the Catch Percentage
+  fmt_number(
+    columns = Catch_Percentage,
+    decimals = 1
+  ) %>%
+  # Enable HTML rendering for styling
+  opt_all_caps(FALSE) %>%
+  tab_options(table.font.size = px(14))
+
+# Display the table
+gt_table
+>>>>>>> 22fb904 (Creating Vikings receiving stats table + fixing Kubiak Chart location)
