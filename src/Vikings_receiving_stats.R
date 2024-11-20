@@ -35,18 +35,18 @@ mn_receivers <- pbp |>
 mn_receivers_table <- mn_receivers |> 
   group_by(receiver_player_name, receiver_player_id) |> 
   summarize(
-            player_gsis = first(receiver_player_id),
-            targets = n(),
-            catches = sum(complete_pass == 1, na.rm = TRUE),
-            catches_per = round((catches / targets) * 100, 1),
-            catchable_targets = sum(is_catchable_ball == 1, na.rm = TRUE),
-            ct_per = round((catchable_targets / targets) * 100, 1),
-            catchable_catches = round((catches / catchable_targets) * 100, 1),
-            cc_per = round((catches / catchable_targets) * 100, 1),
-            completion_probability = round(mean(cp, na.rm = TRUE) * 100, 1),
-            adot = round(mean(air_yards, na.rm = TRUE), 2),
-            drops = sum(is_drop == 1, na.rm = TRUE)
-            ) |> 
+    player_gsis = first(receiver_player_id),
+    targets = n(),
+    catches = sum(complete_pass == 1, na.rm = TRUE),
+    catches_per = round((catches / targets) * 100, 1),
+    catchable_targets = sum(is_catchable_ball == 1, na.rm = TRUE),
+    ct_per = round((catchable_targets / targets) * 100, 1),
+    catchable_catches = round((catches / catchable_targets) * 100, 1),
+    cc_per = round((catches / catchable_targets) * 100, 1),
+    completion_probability = round(mean(cp, na.rm = TRUE) * 100, 1),
+    adot = round(mean(air_yards, na.rm = TRUE), 2),
+    drops = sum(is_drop == 1, na.rm = TRUE)
+  ) |> 
   ungroup() |> 
   arrange(-targets)
 
@@ -117,10 +117,3 @@ mn_receivers_table |>
     footnote = "Blake Robinson | @blakerbsn.bsky.social | nflverse | Inspired by Joseph Hefner."
   ) |> 
   gtExtras::gt_theme_espn()
-
-
-
-
-
-
-
