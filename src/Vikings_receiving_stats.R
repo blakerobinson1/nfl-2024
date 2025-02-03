@@ -63,7 +63,7 @@ mn_receivers_table |>
   gt() |> 
   tab_header(
     title = "Vikings Receiving Stats",
-    subtitle = "2024 | Weeks 1-11 | 10+ Targets"
+    subtitle = "2024 | Weeks 1-12 | 10+ Targets"
   ) |> 
   tab_style(
     style = cell_text(align = "center"),
